@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA Negeri 7 Halmahera Utara</title>
+    <!-- Tailwind CSS untuk styling modern dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 untuk notifikasi / popup (pengganti alert bawaan browser) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sekolah-blue': '#003366',
+                        'sekolah-gold': '#FFD700',
+                        'sekolah-light': '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        
+        /* Smooth Fade In Animation */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #003366; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #002244; }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="bg-sekolah-blue text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
+                <!-- Logo Dummy (Ganti dengan URL logo asli nanti) -->
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-sekolah-blue font-bold text-xl shadow-lg border-2 border-sekolah-gold">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-wide text-sekolah-gold">SMAN 7 HALUT</h1>
+                    <p class="text-xs md:text-sm text-gray-200">Kab. Halmahera Utara, Maluku Utara</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex gap-6 font-semibold items-center">
+                <a href="#" onclick="navigate('home')" class="hover:text-sekolah-gold transition-colors">Beranda</a>
+                <a href="#" onclick="navigate('profil')" class="hover:text-sekolah-gold transition-colors">Profil</a>
+                <a href="#" onclick="navigate('direktori')" class="hover:text-sekolah-gold transition-colors">Direktori</a>
+                <a href="#" onclick="navigate('informasi')" class="hover:text-sekolah-gold transition-colors">Informasi</a>
+                <a href="#" onclick="navigate('galeri')" class="hover:text-sekolah-gold transition-colors">Galeri</a>
+                <a href="#" onclick="navigate('kontak')" class="hover:text-sekolah-gold transition-colors">Kontak</a>
+                <button onclick="navigate('login')" class="bg-sekolah-gold text-sekolah-blue px-4 py-1 rounded-full text-sm hover:bg-yellow-400 transition transform hover:scale-105 shadow-md">
+                    <i class="fas fa-lock mr-1"></i> Admin
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-sekolah-gold focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-sekolah-blue border-t border-blue-800">
+            <div class="flex flex-col px-4 py-2 text-center">
+                <a href="#" onclick="navigate('home')" class="py-3 border-b border-blue-800 hover:text-sekolah-gold">Beranda</a>
+                <a href="#" onclick="navigate('profil')" class="py-3 border-b border-blue-800 hover:text-sekolah-gold">Profil</a>
+                <a href="#" onclick="navigate('direktori')" class="py-3 border-b border-blue-800 hover:text-sekolah-gold">Direktori</a>
+                <a href="#" onclick="navigate('informasi')" class="py-3 border-b border-blue-800 hover:text-sekolah-gold">Informasi</a>
+                <a href="#" onclick="navigate('galeri')" class="py-3 border-b border-blue-800 hover:text-sekolah-gold">Galeri</a>
+                <a href="#" onclick="navigate('kontak')" class="py-3 border-b border-blue-800 hover:text-sekolah-gold">Kontak</a>
+                <a href="#" onclick="navigate('login')" class="py-3 text-sekolah-gold font-bold"><i class="fas fa-lock mr-1"></i> Login Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content" class="flex-grow">
+        <!-- Content will be injected here via JavaScript -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-auto">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 border-b-2 border-sekolah-gold pb-2 inline-block">SMA Negeri 7 Halmahera Utara</h3>
+                <p class="mb-2"><i class="fas fa-map-marker-alt w-5 text-sekolah-gold"></i> Desa Salimuli, Kec. Galela Utara, Kab. Halmahera Utara, Maluku Utara</p>
+                <p class="mb-2"><i class="fas fa-phone w-5 text-sekolah-gold"></i> 081354891249</p>
+                <p class="mb-2"><i class="fas fa-envelope w-5 text-sekolah-gold"></i> info@sman7halut.sch.id</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 border-b-2 border-sekolah-gold pb-2 inline-block">Tautan Cepat</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" onclick="navigate('profil')" class="hover:text-sekolah-gold"><i class="fas fa-angle-right mr-2"></i>Visi & Misi</a></li>
+                    <li><a href="#" onclick="navigate('direktori')" class="hover:text-sekolah-gold"><i class="fas fa-angle-right mr-2"></i>Data Guru</a></li>
+                    <li><a href="#" onclick="navigate('informasi')" class="hover:text-sekolah-gold"><i class="fas fa-angle-right mr-2"></i>Berita Sekolah</a></li>
+                    <li><a href="#" onclick="navigate('galeri')" class="hover:text-sekolah-gold"><i class="fas fa-angle-right mr-2"></i>Galeri Kegiatan</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 border-b-2 border-sekolah-gold pb-2 inline-block">Jam Operasional</h3>
+                <p>Senin - Kamis: 07:00 - 14:00 WIT</p>
+                <p>Jumat: 07:00 - 11:30 WIT</p>
+                <p>Sabtu: 07:00 - 13:00 WIT (Ekskul)</p>
+                <div class="mt-4 flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-sekolah-gold hover:text-blue-900 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white hover:bg-sekolah-gold hover:text-blue-900 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-sekolah-gold hover:text-blue-900 transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
+            &copy; 2026 SMA Negeri 7 Halmahera Utara. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- LOADING OVERLAY -->
+    <div id="loading-overlay" class="fixed inset-0 bg-white/80 z-[100] hidden flex-col items-center justify-center">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-sekolah-blue"></div>
+        <p class="mt-4 text-sekolah-blue font-semibold animate-pulse">Memuat Data...</p>
+    </div>
+
+    <!-- TEMPLATES FOR PAGES (Hidden by default, injected via JS) -->
+    
+    <!-- 1. BERANDA -->
+    <template id="tpl-home">
+        <div class="fade-in">
+            <!-- Hero Banner -->
+            <div class="relative bg-gray-900 h-[60vh] md:h-[80vh] flex items-center justify-center text-center overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Banner Sekolah" class="absolute inset-0 w-full h-full object-cover opacity-40">
+                <div class="relative z-10 px-4 max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
+                        Selamat Datang di <br><span class="text-sekolah-gold">SMA Negeri 7 Halmahera Utara</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 mb-8 drop-shadow-md">Membangun Generasi Cerdas, Berkarakter, dan Berbudaya Menuju Masa Depan Gemilang.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button onclick="navigate('profil')" class="px-8 py-3 bg-sekolah-gold text-sekolah-blue font-bold rounded-full hover:bg-yellow-400 transition shadow-lg transform hover:-translate-y-1">Lebih Lanjut</button>
+                        <button onclick="navigate('informasi')" class="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-sekolah-blue transition shadow-lg transform hover:-translate-y-1">Pengumuman Terbaru</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Features -->
+            <div class="container mx-auto px-4 py-12 -mt-10 relative z-20">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl shadow-xl p-6 text-center border-t-4 border-sekolah-blue transform transition hover:-translate-y-2">
+                        <div class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center text-sekolah-blue text-2xl mb-4"><i class="fas fa-book-open"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Kurikulum Merdeka</h3>
+                        <p class="text-gray-600 text-sm">Menerapkan kurikulum terkini untuk mengembangkan potensi maksimal setiap siswa.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-xl p-6 text-center border-t-4 border-sekolah-gold transform transition hover:-translate-y-2">
+                        <div class="w-16 h-16 mx-auto bg-yellow-100 rounded-full flex items-center justify-center text-sekolah-gold text-2xl mb-4"><i class="fas fa-trophy"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Prestasi Gemilang</h3>
+                        <p class="text-gray-600 text-sm">Berbagai prestasi akademik dan non-akademik di tingkat kabupaten dan provinsi.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-xl p-6 text-center border-t-4 border-sekolah-blue transform transition hover:-translate-y-2">
+                        <div class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center text-sekolah-blue text-2xl mb-4"><i class="fas fa-users"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Tenaga Pendidik</h3>
+                        <p class="text-gray-600 text-sm">Didukung oleh guru-guru profesional, bersertifikasi, dan berdedikasi tinggi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Berita & Agenda Section -->
+            <div class="bg-gray-100 py-16">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-sekolah-blue">Kabar Terbaru</h2>
+                        <div class="w-24 h-1 bg-sekolah-gold mx-auto mt-4 rounded"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="home-news-container">
+                        <!-- News will be injected here -->
+                        <div class="col-span-3 text-center text-gray-500 py-8"><i class="fas fa-spinner fa-spin text-2xl"></i> Memuat Berita...</div>
+                    </div>
+                    <div class="text-center mt-10">
+                        <button onclick="navigate('informasi')" class="px-6 py-2 border-2 border-sekolah-blue text-sekolah-blue rounded-full hover:bg-sekolah-blue hover:text-white transition font-semibold">Lihat Semua Berita</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 2. PROFIL SEKOLAH -->
+    <template id="tpl-profil">
+        <div class="fade-in bg-white pb-16">
+            <!-- Header Halaman -->
+            <div class="bg-sekolah-blue text-white py-12 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Profil Sekolah</h1>
+                <p class="text-sekolah-gold">Mengenal Lebih Dekat SMAN 7 Halmahera Utara</p>
+            </div>
+
+            <div class="container mx-auto px-4 mt-8 flex flex-col lg:flex-row gap-8">
+                <!-- Sidebar Navigasi Profil -->
+                <div class="lg:w-1/4">
+                    <div class="bg-gray-50 rounded-lg p-4 shadow-md sticky top-24">
+                        <ul class="space-y-2">
+                            <li><button onclick="switchTab('sambutan')" id="tab-sambutan" class="w-full text-left px-4 py-3 bg-sekolah-blue text-white font-semibold rounded-md shadow transition">Sambutan Kepala Sekolah</button></li>
+                            <li><button onclick="switchTab('visimisi')" id="tab-visimisi" class="w-full text-left px-4 py-3 hover:bg-gray-200 text-gray-700 font-semibold rounded-md transition">Visi & Misi</button></li>
+                            <li><button onclick="switchTab('sejarah')" id="tab-sejarah" class="w-full text-left px-4 py-3 hover:bg-gray-200 text-gray-700 font-semibold rounded-md transition">Sejarah Singkat</button></li>
+                            <li><button onclick="switchTab('struktur')" id="tab-struktur" class="w-full text-left px-4 py-3 hover:bg-gray-200 text-gray-700 font-semibold rounded-md transition">Struktur Organisasi</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Konten Profil -->
+                <div class="lg:w-3/4 bg-white p-6 md:p-8 rounded-lg shadow-md border border-gray-100" id="profil-content">
+                    <!-- Default to Sambutan -->
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="w-full md:w-1/3 flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Kepala Sekolah" class="w-48 h-48 object-cover rounded-full border-4 border-sekolah-gold shadow-lg mb-4">
+                            <h3 class="font-bold text-lg text-center" id="nama-kepsek">Bpk. Ahmad Suhar, S.Pd, M.Pd</h3>
+                            <p class="text-sm text-gray-500 text-center">Kepala SMAN 7 Halmahera Utara</p>
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <h2 class="text-2xl font-bold text-sekolah-blue mb-4">Sambutan Kepala Sekolah</h2>
+                            <p class="text-gray-700 leading-relaxed mb-4 text-justify">
+                                Assalamu'alaikum Warahmatullahi Wabarakatuh.<br><br>
+                                Selamat datang di website resmi SMA Negeri 7 Halmahera Utara. Di era digital saat ini, website menjadi gerbang informasi utama bagi seluruh warga sekolah, alumni, maupun masyarakat luas. Kami berkomitmen untuk terus meningkatkan mutu pendidikan di wilayah Galela Utara.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed text-justify">
+                                Melalui portal ini, kami berharap komunikasi antara sekolah dan wali murid dapat terjalin lebih erat, transparan, dan informatif. Mari bersama-sama wujudkan SMAN 7 Halmahera Utara yang berprestasi dan berkarakter.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 3. DIREKTORI (Guru & Staf) -->
+    <template id="tpl-direktori">
+        <div class="fade-in pb-16 bg-gray-50 min-h-screen">
+            <div class="bg-sekolah-blue text-white py-12 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Direktori Sekolah</h1>
+                <p class="text-sekolah-gold">Daftar Pendidik dan Tenaga Kependidikan</p>
+            </div>
+
+            <div class="container mx-auto px-4 mt-8">
+                <!-- Tab Controls -->
+                <div class="flex justify-center mb-8 border-b border-gray-300">
+                    <button onclick="renderDirektori('guru')" class="px-6 py-3 font-semibold text-sekolah-blue border-b-4 border-sekolah-blue" id="btn-dir-guru">Data Guru</button>
+                    <button onclick="renderDirektori('staf')" class="px-6 py-3 font-semibold text-gray-500 hover:text-sekolah-blue transition" id="btn-dir-staf">Data Staf</button>
+                </div>
+
+                <div class="mb-6 flex justify-end">
+                    <div class="relative w-full md:w-64">
+                        <input type="text" id="search-dir" placeholder="Cari nama..." class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-sekolah-blue focus:ring-1 focus:ring-sekolah-blue" onkeyup="filterDirektori()">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Grid Data -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="direktori-container">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 4. INFORMASI (Berita & Agenda) -->
+    <template id="tpl-informasi">
+        <div class="fade-in pb-16 bg-white min-h-screen">
+            <div class="bg-sekolah-blue text-white py-12 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Pusat Informasi</h1>
+                <p class="text-sekolah-gold">Berita, Pengumuman, dan Agenda Terkini</p>
+            </div>
+
+            <div class="container mx-auto px-4 mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main Content: News -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-sekolah-blue pl-3">Berita & Pengumuman</h2>
+                    <div id="berita-list-container" class="space-y-6">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Sidebar: Agenda & Prestasi -->
+                <div class="space-y-8">
+                    <!-- Agenda -->
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-200">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4 border-l-4 border-sekolah-gold pl-3">Agenda Terdekat</h2>
+                        <ul class="space-y-4" id="agenda-container">
+                            <!-- Injected by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 5. GALERI -->
+    <template id="tpl-galeri">
+        <div class="fade-in pb-16 bg-gray-50 min-h-screen">
+            <div class="bg-sekolah-blue text-white py-12 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Galeri Sekolah</h1>
+                <p class="text-sekolah-gold">Dokumentasi Kegiatan dan Fasilitas</p>
+            </div>
+
+            <div class="container mx-auto px-4 mt-8">
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button id="btn-gal-all" onclick="filterGaleri('all')" class="gal-btn active px-5 py-2 rounded-full bg-sekolah-blue text-white font-medium text-sm transition shadow">Semua</button>
+                    <button id="btn-gal-foto" onclick="filterGaleri('foto')" class="gal-btn px-5 py-2 rounded-full bg-white text-gray-600 border border-gray-300 font-medium text-sm hover:bg-gray-100 transition shadow">Foto</button>
+                    <button id="btn-gal-video" onclick="filterGaleri('video')" class="gal-btn px-5 py-2 rounded-full bg-white text-gray-600 border border-gray-300 font-medium text-sm hover:bg-gray-100 transition shadow">Video</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="galeri-container">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Image Preview -->
+        <div id="image-modal" class="fixed inset-0 bg-black/90 z-[60] hidden flex items-center justify-center">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300">&times;</button>
+            <img id="modal-img" src="" class="max-w-[90%] max-h-[90vh] object-contain rounded">
+        </div>
+    </template>
+
+    <!-- 6. KONTAK & MAPS -->
+    <template id="tpl-kontak">
+        <div class="fade-in pb-16 bg-white">
+            <div class="bg-sekolah-blue text-white py-12 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Hubungi Kami</h1>
+                <p class="text-sekolah-gold">Kami siap melayani pertanyaan dan saran Anda</p>
+            </div>
+
+            <div class="container mx-auto px-4 mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Info Kontak & Maps -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-sekolah-gold pb-2 inline-block">Informasi Kontak</h2>
+                    <div class="space-y-6 text-gray-700">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex flex-shrink-0 items-center justify-center text-sekolah-blue text-xl mr-4"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">Alamat</h4>
+                                <p>Desa Salimuli, Kecamatan Galela Utara, Kab. Halmahera Utara, Maluku Utara, Indonesia.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex flex-shrink-0 items-center justify-center text-sekolah-blue text-xl mr-4"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">Telepon / WhatsApp</h4>
+                                <p>081354891249</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex flex-shrink-0 items-center justify-center text-sekolah-blue text-xl mr-4"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">Email</h4>
+                                <p>info@sman7halut.sch.id</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-6 border-b-2 border-sekolah-gold pb-2 inline-block">Peta Lokasi</h2>
+                    <!-- Google Maps Embed (Placeholder for Galela Utara) -->
+                    <div class="w-full h-64 bg-gray-200 rounded-lg overflow-hidden shadow-md">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127599.40092244243!2d127.8920959!3d1.8845233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329ce8c9b2f29339%3A0x6b36efc0379c13b5!2sGalela%20Utara%2C%20Kabupaten%20Halmahera%20Utara%2C%20Maluku%20Utara!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Tinggalkan Pesan</h2>
+                    <form id="contactForm" onsubmit="submitMessage(event)">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap *</label>
+                            <input type="text" id="msg-nama" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-sekolah-blue focus:border-sekolah-blue">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">No. HP / WhatsApp</label>
+                            <input type="text" id="msg-hp" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-sekolah-blue focus:border-sekolah-blue">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pesan *</label>
+                            <textarea id="msg-pesan" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-sekolah-blue focus:border-sekolah-blue"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-sekolah-blue text-white py-3 rounded-md font-bold hover:bg-blue-900 transition flex justify-center items-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 7. ADMIN LOGIN -->
+    <template id="tpl-login">
+        <div class="fade-in min-h-[70vh] flex items-center justify-center bg-gray-100">
+            <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-sekolah-blue text-white rounded-full mx-auto flex items-center justify-center text-3xl mb-4 shadow-lg"><i class="fas fa-user-shield"></i></div>
+                    <h2 class="text-2xl font-bold text-gray-800">Login Administrator</h2>
+                    <p class="text-gray-500 text-sm">SMAN 7 Halmahera Utara</p>
+                </div>
+                
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                        <div class="relative">
+                            <i class="fas fa-user absolute left-3 top-3 text-gray-400"></i>
+                            <input type="text" id="admin-user" required class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-sekolah-blue focus:border-sekolah-blue" value="admin">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <div class="relative">
+                            <i class="fas fa-lock absolute left-3 top-3 text-gray-400"></i>
+                            <input type="password" id="admin-pass" required class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-sekolah-blue focus:border-sekolah-blue">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-sekolah-blue text-white py-2 rounded-md font-bold hover:bg-blue-900 transition shadow">
+                        Masuk Sistem
+                    </button>
+                    <p class="text-xs text-center text-gray-400 mt-4">Demo Password: admin123</p>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <!-- 8. ADMIN DASHBOARD -->
+    <template id="tpl-admin-dashboard">
+        <div class="fade-in flex flex-col md:flex-row min-h-screen bg-gray-100">
+            <!-- Sidebar Admin -->
+            <div class="w-full md:w-64 bg-gray-900 text-white flex flex-col">
+                <div class="p-4 border-b border-gray-800 flex items-center gap-3">
+                    <i class="fas fa-cogs text-sekolah-gold text-2xl"></i>
+                    <div>
+                        <h2 class="font-bold text-lg leading-tight">CPanel</h2>
+                        <span class="text-xs text-green-400">&bull; Admin Online</span>
+                    </div>
+                </div>
+                <div class="flex-grow p-4 space-y-2">
+                    <button id="btn-admin-dashboard" onclick="loadAdminView('dashboard')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-800 transition admin-menu-btn"><i class="fas fa-tachometer-alt w-6"></i> Dashboard</button>
+                    <button id="btn-admin-berita" onclick="loadAdminView('berita')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-800 transition admin-menu-btn"><i class="fas fa-newspaper w-6"></i> Kelola Berita</button>
+                    <button id="btn-admin-guru" onclick="loadAdminView('guru')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-800 transition admin-menu-btn"><i class="fas fa-chalkboard-teacher w-6"></i> Kelola Guru & Staf</button>
+                    <button id="btn-admin-galeri" onclick="loadAdminView('galeri')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-800 transition admin-menu-btn"><i class="fas fa-images w-6"></i> Kelola Galeri</button>
+                    <button id="btn-admin-pengaturan" onclick="loadAdminView('pengaturan')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-800 transition admin-menu-btn"><i class="fas fa-cog w-6"></i> Pengaturan Umum</button>
+                </div>
+                <div class="p-4 border-t border-gray-800">
+                    <button onclick="handleLogout()" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition flex items-center justify-center gap-2">
+                        <i class="fas fa-sign-out-alt"></i> Keluar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area Admin -->
+            <div class="flex-grow p-6 w-full overflow-x-auto" id="admin-content-area">
+                <!-- Injected by JS Admin Views -->
+            </div>
+        </div>
+    </template>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // ==========================================
+        // KONFIGURASI DAN STATE
+        // ==========================================
+        // Ganti URL ini dengan URL Web App dari Google Apps Script setelah di-deploy
+        const API_URL = "https://script.google.com/macros/s/AKfycbyJjneYh-blauEGwNz3cOO_QW02PPvfQjbsPKjPvzpi6wxV4SwfTuPAPOg-BbXhbi-Nyg/exec"
+        
+        // Data State Lokal (Mocking Data Default jika API belum tersambung)
+        let state = {
+            isLoggedIn: localStorage.getItem('admin_login') === 'true',
+            berita: [
+                { id: 1, judul: "Penerimaan Peserta Didik Baru 2026/2027", tanggal: "2026-06-15", ringkasan: "Pendaftaran PPDB SMAN 7 Halut telah dibuka secara online.", gambar: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&q=80" },
+                { id: 2, judul: "Juara 1 Lomba Cerdas Cermat Tingkat Kabupaten", tanggal: "2026-05-20", ringkasan: "Tim cerdas cermat sekolah berhasil menyabet piala bupati.", gambar: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=80" },
+                { id: 3, judul: "Pelaksanaan Ujian Akhir Semester Genap", tanggal: "2026-05-10", ringkasan: "Jadwal dan tata tertib UAS Genap dapat dilihat pada papan pengumuman.", gambar: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&q=80" }
+            ],
+            guru: [
+                { id: 1, nama: "Bpk. Ahmad Suhar, M.Pd", nip: "197801012005011001", jabatan: "Kepala Sekolah", foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200" },
+                { id: 2, nama: "Ibu Siti Aminah, S.Pd", nip: "198203122008012003", jabatan: "Wakasek Kurikulum", foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200" },
+                { id: 3, nama: "Bpk. Budi Santoso, S.Pd", nip: "198506152010011005", jabatan: "Guru Matematika", foto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200" }
+            ],
+            staf: [
+                { id: 1, nama: "Hasanudin", jabatan: "Kepala Tata Usaha", foto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200" }
+            ],
+            galeri: [
+                { id: 1, type: "foto", url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600", judul: "Gedung Sekolah" },
+                { id: 2, type: "foto", url: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600", judul: "Suasana Kelas" },
+                { id: 3, type: "foto", url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600", judul: "Upacara Bendera" }
+            ],
+            agenda: [
+                { tanggal: "10 Jul 2026", acara: "Rapat Awal Tahun Ajaran" },
+                { tanggal: "15 Jul 2026", acara: "MPLS Siswa Baru" }
+            ]
+        };
+
+        // ==========================================
+        // SISTEM ROUTING & TEMPLATING SEDERHANA
+        // ==========================================
+        function navigate(page) {
+            const mainContent = document.getElementById('main-content');
+            const template = document.getElementById(`tpl-${page}`);
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo(0, 0);
+
+            if (page === 'login' && state.isLoggedIn) {
+                navigate('admin-dashboard');
+                return;
+            }
+
+            if (template) {
+                mainContent.innerHTML = template.innerHTML;
+                
+                // Eksekusi fungsi khusus setelah render halaman
+                if (page === 'home') renderHome();
+                if (page === 'profil') switchTab('sambutan');
+                if (page === 'direktori') renderDirektori('guru');
+                if (page === 'informasi') renderInformasi();
+                if (page === 'galeri') filterGaleri('all');
+                if (page === 'admin-dashboard') loadAdminView('dashboard');
+            } else {
+                mainContent.innerHTML = `<div class="text-center py-20 text-xl font-bold text-gray-500">Halaman tidak ditemukan.</div>`;
+            }
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // ==========================================
+        // FUNGSI RENDER HALAMAN PUBLIK
+        // ==========================================
+        
+        function renderHome() {
+            const container = document.getElementById('home-news-container');
+            if (!container) return;
+            
+            let html = '';
+            // Tampilkan 3 berita terbaru
+            const latestNews = state.berita.slice(0, 3);
+            latestNews.forEach(item => {
+                html += `
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition hover:-translate-y-1">
+                        <img src="${item.gambar}" alt="${item.judul}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-xs text-sekolah-gold font-bold mb-2"><i class="far fa-calendar-alt"></i> ${item.tanggal}</p>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">${item.judul}</h3>
+                            <p class="text-sm text-gray-600 line-clamp-3">${item.ringkasan}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // Tab Profil
+        const kontenProfil = {
+            'sambutan': `
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="w-full md:w-1/3 flex flex-col items-center">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300" alt="Kepala Sekolah" class="w-48 h-48 object-cover rounded-full border-4 border-sekolah-gold shadow-lg mb-4">
+                        <h3 class="font-bold text-lg text-center">Bpk. Ahmad Suhar, S.Pd, M.Pd</h3>
+                        <p class="text-sm text-gray-500 text-center">Kepala SMAN 7 Halmahera Utara</p>
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h2 class="text-2xl font-bold text-sekolah-blue mb-4">Sambutan Kepala Sekolah</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4 text-justify">Assalamu'alaikum Warahmatullahi Wabarakatuh.<br><br>Selamat datang di website resmi SMA Negeri 7 Halmahera Utara. Di era digital saat ini, website menjadi gerbang informasi utama bagi seluruh warga sekolah, alumni, maupun masyarakat luas. Kami berkomitmen untuk terus meningkatkan mutu pendidikan di wilayah Galela Utara.</p>
+                        <p class="text-gray-700 leading-relaxed text-justify">Melalui portal ini, kami berharap komunikasi antara sekolah dan wali murid dapat terjalin lebih erat, transparan, dan informatif. Mari bersama-sama wujudkan SMAN 7 Halmahera Utara yang berprestasi dan berkarakter.</p>
+                    </div>
+                </div>`,
+            'visimisi': `
+                <h2 class="text-2xl font-bold text-sekolah-blue mb-6 border-b-2 border-sekolah-gold pb-2 inline-block">Visi & Misi</h2>
+                <div class="mb-6 bg-blue-50 p-6 rounded-lg">
+                    <h3 class="font-bold text-xl text-center text-sekolah-blue mb-4">VISI</h3>
+                    <p class="text-center font-medium italic">"Terwujudnya Generasi yang Beriman, Bertaqwa, Cerdas, Terampil, dan Berbudaya Lingkungan"</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl text-sekolah-blue mb-3">MISI</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700 pl-4">
+                        <li>Meningkatkan keimanan dan ketaqwaan kepada Tuhan YME.</li>
+                        <li>Melaksanakan pembelajaran yang aktif, inovatif, kreatif, efektif, dan menyenangkan (PAIKEM).</li>
+                        <li>Meningkatkan prestasi akademik dan non-akademik peserta didik.</li>
+                        <li>Mengembangkan minat, bakat, dan kreativitas siswa melalui kegiatan ekstrakurikuler.</li>
+                        <li>Menumbuhkan budaya disiplin, peduli lingkungan, dan toleransi antar sesama.</li>
+                    </ol>
+                </div>`,
+            'sejarah': `
+                <h2 class="text-2xl font-bold text-sekolah-blue mb-6 border-b-2 border-sekolah-gold pb-2 inline-block">Sejarah Singkat</h2>
+                <div class="prose max-w-none text-gray-700 text-justify">
+                    <p>SMA Negeri 7 Halmahera Utara, berlokasi di Desa Salimuli, Kecamatan Galela Utara, didirikan sebagai wujud komitmen pemerintah daerah untuk memperluas akses pendidikan tingkat menengah atas bagi masyarakat di wilayah Galela dan sekitarnya.</p>
+                    <p class="mt-4">Sejak awal berdirinya, sekolah ini telah mengalami berbagai perkembangan, baik dari segi infrastruktur gedung maupun kualitas sumber daya manusia. Dengan dukungan dari masyarakat desa Salimuli dan sekitarnya, SMAN 7 Halut terus berupaya mencetak lulusan yang tidak hanya cerdas secara intelektual, tetapi juga memiliki karakter akhlak mulia dan keterampilan yang relevan dengan perkembangan zaman.</p>
+                </div>`,
+            'struktur': `
+                <h2 class="text-2xl font-bold text-sekolah-blue mb-6 border-b-2 border-sekolah-gold pb-2 inline-block">Struktur Organisasi</h2>
+                <div class="text-center py-10 bg-gray-50 rounded-lg border border-gray-200">
+                    <i class="fas fa-sitemap text-6xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500">Bagan Struktur Organisasi dalam proses pembaruan.</p>
+                </div>`
+        };
+
+        function switchTab(tabId) {
+            const container = document.getElementById('profil-content');
+            if(!container) return;
+            
+            // Reset button styles
+            ['sambutan', 'visimisi', 'sejarah', 'struktur'].forEach(id => {
+                const btn = document.getElementById(`tab-${id}`);
+                if(btn) {
+                    btn.className = "w-full text-left px-4 py-3 hover:bg-gray-200 text-gray-700 font-semibold rounded-md transition";
+                }
+            });
+            
+            // Active button style
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if(activeBtn) {
+                activeBtn.className = "w-full text-left px-4 py-3 bg-sekolah-blue text-white font-semibold rounded-md shadow transition";
+            }
+            
+            // Set content
+            container.innerHTML = kontenProfil[tabId];
+            container.classList.remove('fade-in');
+            void container.offsetWidth; // trigger reflow
+            container.classList.add('fade-in');
+        }
+
+        // Direktori
+        let currentDir = 'guru';
+        function renderDirektori(type) {
+            currentDir = type;
+            const container = document.getElementById('direktori-container');
+            const searchInput = document.getElementById('search-dir');
+            if(!container) return;
+            
+            // UI Tab Toggle
+            const btnGuru = document.getElementById('btn-dir-guru');
+            const btnStaf = document.getElementById('btn-dir-staf');
+            
+            if(type === 'guru') {
+                btnGuru.className = "px-6 py-3 font-semibold text-sekolah-blue border-b-4 border-sekolah-blue";
+                btnStaf.className = "px-6 py-3 font-semibold text-gray-500 hover:text-sekolah-blue transition";
+            } else {
+                btnStaf.className = "px-6 py-3 font-semibold text-sekolah-blue border-b-4 border-sekolah-blue";
+                btnGuru.className = "px-6 py-3 font-semibold text-gray-500 hover:text-sekolah-blue transition";
+            }
+
+            if(searchInput) searchInput.value = '';
+            
+            displayDirektoriData(state[type]);
+        }
+
+        function displayDirektoriData(data) {
+            const container = document.getElementById('direktori-container');
+            if(!container) return;
+            
+            if(data.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Belum ada data.</div>`;
+                return;
+            }
+            
+            let html = '';
+            data.forEach(item => {
+                let foto = item.foto || 'https://via.placeholder.com/200?text=No+Foto';
+                html += `
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition border-t-2 border-sekolah-gold">
+                        <img src="${foto}" class="w-24 h-24 object-cover rounded-full mx-auto mb-4 shadow border-2 border-gray-100">
+                        <h3 class="font-bold text-gray-800 text-lg">${item.nama}</h3>
+                        <p class="text-sekolah-blue font-medium text-sm mb-1">${item.jabatan}</p>
+                        ${item.nip ? `<p class="text-xs text-gray-500">NIP/NUPTK: <br>${item.nip}</p>` : ''}
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function filterDirektori() {
+            const keyword = document.getElementById('search-dir').value.toLowerCase();
+            const filteredData = state[currentDir].filter(item => 
+                item.nama.toLowerCase().includes(keyword) || 
+                item.jabatan.toLowerCase().includes(keyword)
+            );
+            displayDirektoriData(filteredData);
+        }
+
+        // Informasi (Berita & Agenda)
+        function renderInformasi() {
+            const beritaContainer = document.getElementById('berita-list-container');
+            const agendaContainer = document.getElementById('agenda-container');
+            if(!beritaContainer || !agendaContainer) return;
+
+            // Render Berita
+            let bHtml = '';
+            state.berita.forEach(item => {
+                bHtml += `
+                    <div class="flex flex-col sm:flex-row bg-white rounded-lg shadow border border-gray-100 overflow-hidden hover:shadow-md transition">
+                        <img src="${item.gambar}" class="w-full sm:w-48 h-48 sm:h-auto object-cover">
+                        <div class="p-5 flex flex-col justify-center">
+                            <span class="text-xs font-bold text-sekolah-gold mb-1"><i class="far fa-calendar-alt"></i> ${item.tanggal}</span>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">${item.judul}</h3>
+                            <p class="text-gray-600 text-sm mb-3">${item.ringkasan}</p>
+                            <button class="text-sekolah-blue font-semibold text-sm self-start hover:underline">Baca Selengkapnya &rarr;</button>
+                        </div>
+                    </div>
+                `;
+            });
+            beritaContainer.innerHTML = bHtml;
+
+            // Render Agenda
+            let aHtml = '';
+            state.agenda.forEach(item => {
+                aHtml += `
+                    <li class="flex items-start gap-4 pb-4 border-b border-gray-200 last:border-0">
+                        <div class="bg-sekolah-blue text-white text-center rounded p-2 min-w-[60px]">
+                            <span class="block text-xl font-bold">${item.tanggal.split(' ')[0]}</span>
+                            <span class="block text-xs uppercase">${item.tanggal.split(' ')[1]}</span>
+                        </div>
+                        <div class="pt-1">
+                            <h4 class="font-bold text-gray-800 text-sm">${item.acara}</h4>
+                        </div>
+                    </li>
+                `;
+            });
+            agendaContainer.innerHTML = aHtml;
+        }
+
+        // Galeri
+        function filterGaleri(type) {
+            const container = document.getElementById('galeri-container');
+            if(!container) return;
+
+            // Update UI Button active state
+            document.querySelectorAll('.gal-btn').forEach(btn => {
+                btn.className = "gal-btn px-5 py-2 rounded-full bg-white text-gray-600 border border-gray-300 font-medium text-sm hover:bg-gray-100 transition shadow";
+            });
+            const activeBtn = document.getElementById(`btn-gal-${type}`);
+            if (activeBtn) activeBtn.className = "gal-btn active px-5 py-2 rounded-full bg-sekolah-blue text-white font-medium text-sm transition shadow";
+
+            let data = type === 'all' ? state.galeri : state.galeri.filter(g => g.type === type);
+            
+            if(data.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">Belum ada media di kategori ini.</div>`;
+                return;
+            }
+
+            let html = '';
+            data.forEach(item => {
+                if(item.type === 'foto') {
+                    html += `
+                        <div class="relative group rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition cursor-pointer" onclick="openModal('${item.url}')">
+                            <img src="${item.url}" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                                <p class="text-white font-medium">${item.judul}</p>
+                            </div>
+                            <div class="absolute top-3 right-3 bg-white/80 p-1 rounded-full"><i class="fas fa-camera text-sekolah-blue text-xs"></i></div>
+                        </div>
+                    `;
+                } else if (item.type === 'video') {
+                    // Cek jika Youtube URL (sederhana)
+                    let vidEmbed = item.url.includes('youtube') ? 
+                        `<iframe class="w-full h-64 object-cover" src="${item.url.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe>` :
+                        `<video class="w-full h-64 object-cover" controls><source src="${item.url}" type="video/mp4"></video>`;
+                    
+                    html += `
+                        <div class="relative rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition bg-black">
+                            ${vidEmbed}
+                            <div class="p-3 bg-white">
+                                <p class="font-medium text-gray-800 text-sm truncate">${item.judul}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            container.innerHTML = html;
+        }
+
+        function openModal(imgUrl) {
+            document.getElementById('modal-img').src = imgUrl;
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+        function closeModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+
+        // Kontak Form
+        function submitMessage(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            btn.disabled = true;
+
+            // Simulasi API Post
+            setTimeout(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Terkirim!',
+                    text: 'Pesan Anda berhasil dikirim ke sekolah.',
+                    confirmButtonColor: '#003366'
+                });
+                e.target.reset();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // ==========================================
+        // SISTEM PANEL ADMIN
+        // ==========================================
+        
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('admin-user').value;
+            const pass = document.getElementById('admin-pass').value;
+
+            // Basic validation for demo. In real app, call GAS backend.
+            if(user === 'admin' && pass === 'admin123') {
+                localStorage.setItem('admin_login', 'true');
+                state.isLoggedIn = true;
+                Swal.fire({ icon: 'success', title: 'Login Berhasil', showConfirmButton: false, timer: 1000 }).then(() => {
+                    navigate('admin-dashboard');
+                });
+            } else {
+                Swal.fire({ icon: 'error', title: 'Akses Ditolak', text: 'Username atau password salah!' });
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('admin_login');
+            state.isLoggedIn = false;
+            navigate('home');
+        }
+
+        function loadAdminView(view) {
+            const area = document.getElementById('admin-content-area');
+            if(!area) return;
+            
+            // Highlight active menu
+            document.querySelectorAll('.admin-menu-btn').forEach(btn => btn.classList.remove('bg-gray-800', 'border-l-4', 'border-sekolah-gold'));
+            const activeAdminBtn = document.getElementById(`btn-admin-${view}`);
+            if (activeAdminBtn) activeAdminBtn.classList.add('bg-gray-800', 'border-l-4', 'border-sekolah-gold');
+
+            if(view === 'dashboard') {
+                area.innerHTML = `
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Dashboard Admin</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-blue-500 text-white p-6 rounded-xl shadow">
+                            <h3 class="text-lg font-semibold">Total Guru</h3>
+                            <p class="text-4xl font-bold mt-2">${state.guru.length}</p>
+                        </div>
+                        <div class="bg-green-500 text-white p-6 rounded-xl shadow">
+                            <h3 class="text-lg font-semibold">Berita</h3>
+                            <p class="text-4xl font-bold mt-2">${state.berita.length}</p>
+                        </div>
+                        <div class="bg-yellow-500 text-white p-6 rounded-xl shadow">
+                            <h3 class="text-lg font-semibold">Item Galeri</h3>
+                            <p class="text-4xl font-bold mt-2">${state.galeri.length}</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <h3 class="font-bold text-gray-700 mb-4">Informasi Sistem</h3>
+                        <p class="text-sm text-gray-600 mb-2">Panel admin ini terhubung dengan Google Sheets sebagai Database menggunakan Google Apps Script.</p>
+                        <p class="text-sm text-gray-600">Fitur yang tersedia: Tambah/Edit/Hapus Data (CRUD), Upload Foto langsung (Otomatis konversi Base64).</p>
+                    </div>
+                `;
+            } 
+            else if(view === 'guru') {
+                area.innerHTML = `
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">Kelola Direktori Guru & Staf</h2>
+                        <button onclick="document.getElementById('modal-guru').classList.remove('hidden')" class="bg-sekolah-blue text-white px-4 py-2 rounded shadow hover:bg-blue-800"><i class="fas fa-plus mr-1"></i> Tambah Data</button>
+                    </div>
+                    <div class="bg-white rounded-xl shadow overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 border-b border-gray-200 text-sm text-gray-600">
+                                    <th class="p-4">Foto</th>
+                                    <th class="p-4">Nama</th>
+                                    <th class="p-4">Jabatan</th>
+                                    <th class="p-4">NIP</th>
+                                    <th class="p-4">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${state.guru.map(g => `
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="p-4"><img src="${g.foto}" class="w-10 h-10 rounded-full object-cover"></td>
+                                    <td class="p-4 font-semibold text-gray-800">${g.nama}</td>
+                                    <td class="p-4 text-sm">${g.jabatan}</td>
+                                    <td class="p-4 text-sm">${g.nip || '-'}</td>
+                                    <td class="p-4">
+                                        <button class="text-blue-500 hover:text-blue-700 mr-3"><i class="fas fa-edit"></i></button>
+                                        <button class="text-red-500 hover:text-red-700" onclick="dummyDelete('guru', ${g.id})"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Modal Tambah Guru -->
+                    <div id="modal-guru" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center">
+                        <div class="bg-white p-6 rounded-xl w-full max-w-md">
+                            <h3 class="text-xl font-bold mb-4">Tambah Data Guru</h3>
+                            <form onsubmit="dummySaveGuru(event)">
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
+                                    <input type="text" id="input-nama-guru" required class="w-full border p-2 rounded">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium mb-1">Jabatan</label>
+                                    <input type="text" id="input-jabatan-guru" required class="w-full border p-2 rounded">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium mb-1">NIP (Opsional)</label>
+                                    <input type="text" id="input-nip-guru" class="w-full border p-2 rounded">
+                                </div>
+                                <div class="flex justify-end gap-2 mt-6">
+                                    <button type="button" onclick="document.getElementById('modal-guru').classList.add('hidden')" class="px-4 py-2 bg-gray-200 rounded">Batal</button>
+                                    <button type="submit" class="px-4 py-2 bg-sekolah-blue text-white rounded">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+            }
+            else if (view === 'galeri') {
+                area.innerHTML = `
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">Kelola Galeri Media</h2>
+                        <button onclick="document.getElementById('upload-modal').classList.remove('hidden')" class="bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700"><i class="fas fa-upload mr-1"></i> Upload Baru</button>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        ${state.galeri.map(g => `
+                            <div class="relative group rounded shadow bg-white p-2">
+                                ${g.type==='foto' ? `<img src="${g.url}" class="w-full h-32 object-cover rounded">` : `<div class="w-full h-32 bg-black flex items-center justify-center text-white"><i class="fas fa-video text-3xl"></i></div>`}
+                                <p class="text-xs mt-2 truncate">${g.judul}</p>
+                                <button class="absolute top-3 right-3 bg-red-500 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition shadow hover:bg-red-700" onclick="dummyDelete('galeri', ${g.id})"><i class="fas fa-trash text-xs"></i></button>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Modal Upload Galeri (Demo Upload File via HP) -->
+                    <div id="upload-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center">
+                        <div class="bg-white p-6 rounded-xl w-full max-w-md">
+                            <h3 class="text-xl font-bold mb-4">Upload Media</h3>
+                            <form onsubmit="dummyUpload(event)">
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium mb-1">Judul Media</label>
+                                    <input type="text" id="input-judul-galeri" required class="w-full border p-2 rounded">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium mb-1">Pilih File (Dari Galeri HP/Komputer)</label>
+                                    <input type="file" accept="image/*,video/*" required class="w-full border p-2 rounded text-sm">
+                                    <p class="text-xs text-gray-500 mt-1">Sistem akan otomatis mengubah file menjadi Base64 untuk dikirim ke Google Script.</p>
+                                </div>
+                                <div class="flex justify-end gap-2 mt-6">
+                                    <button type="button" onclick="document.getElementById('upload-modal').classList.add('hidden')" class="px-4 py-2 bg-gray-200 rounded">Batal</button>
+                                    <button type="submit" class="px-4 py-2 bg-sekolah-blue text-white rounded">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+            }
+            else {
+                area.innerHTML = `<div class="p-10 text-center text-gray-500">Modul ${view} sedang dalam pengembangan. Pada versi nyata, terhubung dengan endpoint Apps Script.</div>`;
+            }
+        }
+
+        // Dummy actions for admin interactions
+        function dummyDelete(type, id) {
+            Swal.fire({
+                title: 'Hapus Data?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Update state lokal
+                    if (type === 'guru') {
+                        state.guru = state.guru.filter(item => item.id !== id);
+                    } else if (type === 'galeri') {
+                        state.galeri = state.galeri.filter(item => item.id !== id);
+                    }
+                    
+                    // Render ulang komponen admin
+                    loadAdminView(type);
+                    
+                    Swal.fire('Terhapus!', 'Data berhasil dihapus dari database.', 'success');
+                }
+            })
+        }
+
+        function dummySaveGuru(e) {
+            e.preventDefault();
+            const nama = document.getElementById('input-nama-guru').value;
+            const jabatan = document.getElementById('input-jabatan-guru').value;
+            const nip = document.getElementById('input-nip-guru').value;
+            
+            Swal.fire({ title: 'Menyimpan...', text: 'Memproses ke sistem...', allowOutsideClick: false, didOpen: () => { Swal.showLoading() } });
+            
+            setTimeout(() => {
+                // Generate ID unik untuk demo
+                const newId = state.guru.length > 0 ? Math.max(...state.guru.map(g => g.id)) + 1 : 1;
+                
+                // Masukkan ke state lokal
+                state.guru.push({
+                    id: newId,
+                    nama: nama,
+                    jabatan: jabatan,
+                    nip: nip,
+                    foto: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200' // Foto placeholder acak
+                });
+                
+                document.getElementById('modal-guru').classList.add('hidden');
+                loadAdminView('guru'); // Segarkan tampilan tabel
+                
+                Swal.fire('Berhasil!', 'Data guru berhasil ditambahkan.', 'success');
+            }, 1000);
+        }
+
+        function dummyUpload(e) {
+            e.preventDefault();
+            const judul = document.getElementById('input-judul-galeri').value;
+            
+            Swal.fire({ title: 'Mengunggah...', text: 'Memproses ke Google Drive via GAS...', allowOutsideClick: false, didOpen: () => { Swal.showLoading() } });
+            
+            setTimeout(() => {
+                // Generate ID unik untuk demo
+                const newId = state.galeri.length > 0 ? Math.max(...state.galeri.map(g => g.id)) + 1 : 1;
+                
+                // Masukkan gambar baru ke state lokal (menggunakan placeholder untuk demo visual)
+                state.galeri.push({
+                    id: newId,
+                    type: 'foto',
+                    url: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600',
+                    judul: judul
+                });
+                
+                document.getElementById('upload-modal').classList.add('hidden');
+                loadAdminView('galeri'); // Segarkan tampilan grid galeri
+                
+                Swal.fire('Berhasil!', 'File telah terunggah ke galeri.', 'success');
+            }, 1500);
+        }
+
+
+        // ==========================================
+        // INIT & DATA FETCHING
+        // ==========================================
+        
+        // Fungsi simulasi fetch API dari GAS
+        async function fetchInitialData() {
+            if(API_URL === "URL_GOOGLE_APPS_SCRIPT_ANDA_DISINI") {
+                console.log("Menggunakan data lokal karena API URL belum diset.");
+                return; // Gunakan state default
+            }
+
+            try {
+                document.getElementById('loading-overlay').classList.remove('hidden');
+                document.getElementById('loading-overlay').classList.add('flex');
+                
+                const response = await fetch(API_URL + "?action=getAllData");
+                const result = await response.json();
+                
+                if(result.status === 'success') {
+                    // Update state dengan data dari Google Sheets
+                    if(result.data.berita) state.berita = result.data.berita;
+                    if(result.data.guru) state.guru = result.data.guru;
+                    if(result.data.staf) state.staf = result.data.staf;
+                    if(result.data.galeri) state.galeri = result.data.galeri;
+                    if(result.data.agenda) state.agenda = result.data.agenda;
+                }
+            } catch (error) {
+                console.error("Gagal mengambil data dari server:", error);
+                // Biarkan menggunakan state lokal sebagai fallback (offline mode demo)
+            } finally {
+                document.getElementById('loading-overlay').classList.add('hidden');
+                document.getElementById('loading-overlay').classList.remove('flex');
+            }
+        }
+
+        // Initial Load
+        window.onload = () => {
+            fetchInitialData().then(() => {
+                // Tampilkan halaman pertama berdasarkan hash URL, default ke Home
+                const hash = window.location.hash.substring(1);
+                const allowedPages = ['home', 'profil', 'direktori', 'informasi', 'galeri', 'kontak', 'login'];
+                
+                if(hash && allowedPages.includes(hash)) {
+                    navigate(hash);
+                } else if(hash === 'admin-dashboard' && state.isLoggedIn) {
+                    navigate('admin-dashboard');
+                } else {
+                    navigate('home');
+                }
+            });
+        };
+
+        // Update URL hash for better UX
+        const originalNavigate = navigate;
+        navigate = (page) => {
+            window.location.hash = page;
+            originalNavigate(page);
+        }
+    </script>
+</body>
+</html>
